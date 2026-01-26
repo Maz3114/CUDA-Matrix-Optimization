@@ -4,6 +4,7 @@
 **Objective:** Designed a high-performance custom CUDA kernel to compete with NVIDIA's cuBLAS library for SGEMM (Single Precision General Matrix Multiply).
 
 **Techniques Used:**
+
 ->Shared Memory Tiling: Reduced Global Memory bandwidth consumption by 16x.
 
 ->Coalesced Memory Access: Optimized warp execution to ensure 100% bus utilization.
