@@ -17,7 +17,7 @@
     } \
 }
 
-// Your Tiled Kernel
+
 __global__ void matrixMulTiled(float *A, float *B, float *C, int width) {
     int Row = blockIdx.y * TILE_WIDTH + threadIdx.y;
     int Col = blockIdx.x * TILE_WIDTH + threadIdx.x;
@@ -66,7 +66,7 @@ int main() {
     CHECK(cudaEventCreate(&start));
     CHECK(cudaEventCreate(&stop));
 
-    // 1. RUN YOUR KERNEL
+    
     dim3 dimBlock(TILE_WIDTH, TILE_WIDTH);
     dim3 dimGrid(width/TILE_WIDTH, width/TILE_WIDTH);
 
@@ -83,7 +83,7 @@ int main() {
     CHECK(cudaEventElapsedTime(&myTime, start, stop));
     printf("Your Time:   %f ms\n", myTime);
 
-    // 2. RUN NVIDIA cuBLAS
+    // RUN NVIDIA cuBLAS
     cublasHandle_t handle;
     cublasCreate(&handle); // Note: Should check status here too, but skipping for brevity
     const float alpha = 1.0f;
